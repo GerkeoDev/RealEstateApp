@@ -14,8 +14,8 @@ app.use(express.urlencoded({extended: true}))
 const {oAuthRouter} = require("./routes/oauth.routes")
 app.use("/api/", oAuthRouter)
 
-// const {exampleRouter} = require("./routes/example.routes")
-// app.use("/api/", exampleRouter)
+const {estateRouter} = require("./routes/estate.routes")
+app.use("/api/", estateRouter)
 
 app.listen(8000, () =>{
     console.log("Listening at Port 8000")
