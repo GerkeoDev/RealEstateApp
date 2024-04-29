@@ -1,0 +1,17 @@
+.home-content {
+    /* background-color: beige; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-content h1 {
+    font-size: 100px;
+    padding-top: 3%;
+    padding-left: 3%;
+}
+
+.home-content img {
+    padding-top: 3%;
+    padding-right: 3%;
+    min-width: 1000px;
+}

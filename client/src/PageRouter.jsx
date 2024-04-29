@@ -1,10 +1,10 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import React, { useEffect } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
-import Home from './pages/Home';
+import Home from './pages/HomePage/Home';
 import Comprar from './pages/Comprar';
 import Alquilar from './pages/Alquilar';
-import Buscar from './pages/Buscar';
+import Buscar from './pages/BuscarPage/Buscar';
 import LoginPage from './pages/LoginPage';
 
 export const Context = React.createContext()
