@@ -19,8 +19,8 @@ const PageRouter = (props) => {
                 setUser: setUser
             }}>
                 <Routes>
-                    <Route index={true} path='/' element={<Home />}/>
                     <Route index={true} path='/login' element={<LoginPage />}/>
+                    <Route path='/home' element={<Home />}/>
                 </Routes>
             </Context.Provider>
         </BrowserRouter>

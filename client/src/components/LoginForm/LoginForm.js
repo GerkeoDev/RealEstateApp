@@ -49,7 +49,7 @@ const LoginForm = () => {
                 setUser({logged: true, id: id, userName: userName})
                 
                 console.log("Successful Login", user)
-                navigate("/")
+                navigate("/home")
         })
             .catch(err => {
                 if(err.response){

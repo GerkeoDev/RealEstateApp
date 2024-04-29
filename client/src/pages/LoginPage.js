@@ -20,7 +20,7 @@ const LoginPage = () => {
                     </div>
                     : <div>
                         <h1>You are now logged in.</h1>
-                        <button onClick={() => navigate("/")}>
+                        <button onClick={() => navigate("/home")}>
                             Go to home
                         </button>
                     </div>
