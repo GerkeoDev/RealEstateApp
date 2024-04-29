@@ -1,17 +1,17 @@
 import Navbar from '../components/Navbar/Navbar';
 
-const Home = () => {
-
+const Buscar = () => {
+    
     return (
         <div>
             <div>
                 <Navbar
-                    section='inicio'
+                    section='buscar'
                 />
             </div>
-            <h1>Home Page</h1>
+            <h1>Buscar Page</h1>
         </div>
     )
 }
 
-export default Home;
+export default Buscar;

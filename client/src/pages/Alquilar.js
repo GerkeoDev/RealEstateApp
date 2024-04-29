@@ -1,17 +1,17 @@
 import Navbar from '../components/Navbar/Navbar';
 
-const Home = () => {
-
+const Alquilar = () => {
+    
     return (
         <div>
             <div>
                 <Navbar
-                    section='inicio'
+                    section='alquilar'
                 />
             </div>
-            <h1>Home Page</h1>
+            <h1>Alquilar Page</h1>
         </div>
     )
 }
 
-export default Home;
+export default Alquilar;
