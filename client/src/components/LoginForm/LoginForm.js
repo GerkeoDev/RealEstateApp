@@ -1,19 +1,21 @@
-import { useContext, useState } from "react"
-import {useNavigate} from "react-router-dom"
-import HTTPClient from "../../utils/HTTPClient"
-import { Context } from "../../PageRouter"
+import { useContext, useState } from "react";
+import {useNavigate} from "react-router-dom";
+import HTTPClient from "../../utils/HTTPClient";
+import { Context } from "../../PageRouter";
 
 const LoginForm = () => {
-    const navigate = useNavigate()
-    const [data, setData] = useState({})
-    const [errors, setErrors] = useState({})
-    const {user, setUser} = useContext(Context)
+    const navigate = useNavigate();
+    const [data, setData] = useState({});
+    const [errors, setErrors] = useState({});
+    const {user, setUser} = useContext(Context);
+    
     const handleChange = (e) => {
         setData({
             ...data,
             [e.target.name]: e.target.value
         })
     }
+
     const validate = () => {
         let flag = true
         let errors = {}
@@ -35,6 +37,7 @@ const LoginForm = () => {
         setErrors(errors)
         return flag
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!validate()){
@@ -59,7 +62,8 @@ const LoginForm = () => {
             })
         setData({})
     }
-    return (
+
+    return(
         <div>
             <div className="min-h-72 min-w-96 border rounded flex flex-col justify-center items-center shadow-md">
                 <h1 className="text-2xl mb-4">Iniciar Sesión</h1>
@@ -87,7 +91,7 @@ const LoginForm = () => {
                 </form>
             </div>
         </div>
-        
-    )
+    );
 }
-export default LoginForm
+
+export default LoginForm;

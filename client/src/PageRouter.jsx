@@ -18,14 +18,15 @@ const PageRouter = (props) => {
     useEffect(()=> {
         
     }, [])
-    return <BrowserRouter>
+
+    return(
+        <BrowserRouter>
             <Context.Provider value={{
                 user: user,
                 setUser: setUser
             }}>
                 <Routes>
                     <Route index={true} path='/login' element={<LoginPage />}/>
-                    <Route path='/' element={<Home />}/>
                     <Route path='/home' element={<Home />}/>
                     <Route path='/comprar' element={<Comprar />}/>
                     <Route path='/comprar/:property' element={<Detail />}/>
@@ -36,5 +37,7 @@ const PageRouter = (props) => {
                 </Routes>
             </Context.Provider>
         </BrowserRouter>
+    );
 }
-export default PageRouter
+
+export default PageRouter;

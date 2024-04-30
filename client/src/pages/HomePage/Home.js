@@ -4,7 +4,7 @@ import './Home.style.css';
 const Home = () => {
 
     return (
-        <div>
+        <div className='home-body'>
             <Navbar
                 section='inicio'
             />

@@ -1,13 +1,15 @@
-import {useNavigate} from "react-router-dom"
-import { useContext, useState } from "react"
-import { Context } from "../../PageRouter"
+import {useNavigate} from "react-router-dom";
+import { useContext, useState } from "react";
+import { Context } from "../../PageRouter";
 
 const PropertyCard = ({property}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
     const handleClick = () => {
         navigate(`/${property.availableFor}/${property.title}`)
     }
-    return (
+
+    return(
         <div className="border border-gray-300 rounded-lg overflow-hidden shadow-md flex flex-col mb-4">
             <div className="h-40 overflow-hidden">
                 <img className="object-cover w-full h-full" src={property.images[0]} alt={property.title}/>
@@ -21,6 +23,7 @@ const PropertyCard = ({property}) => {
                 <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded" onClick={handleClick}>Ver más</button>
             </div>
         </div>
-    )
+    );
 } 
-export default PropertyCard
+
+export default PropertyCard;

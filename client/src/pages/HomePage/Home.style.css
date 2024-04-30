@@ -1,3 +1,8 @@
+.home-body {
+    height: 100vh;
+    /* background-color: aqua; */
+}
+
 .home-content {
     /* background-color: beige; */
     display: flex;
@@ -5,13 +10,17 @@
 }
 
 .home-content h1 {
-    font-size: 100px;
-    padding-top: 3%;
-    padding-left: 3%;
+    /* font-size: 100px; */
+    font-size: 6vw;
+    margin-top: 3%;
+    margin-left: 5%;
 }
 
 .home-content img {
-    padding-top: 3%;
-    padding-right: 3%;
-    min-width: 1000px;
+    margin-top: 3%;
+    margin-right: 5%;
+    /* min-width: 1000px; */
+    width: 55vw;
+    outline: 2px solid #003604;
+    border-radius: 0.375rem;
 }
