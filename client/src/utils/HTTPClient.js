@@ -26,6 +26,10 @@ class HTTPClient {
     // getEstates(){
     //     return this.instance.get("/estates/")
     // }
+
+    getEstatesByAvailableFor(availableFor){
+        return this.instance.get(`/estates/${availableFor}`)
+    }
     
 }
 

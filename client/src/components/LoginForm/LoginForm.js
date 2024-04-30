@@ -42,7 +42,7 @@ const LoginForm = () => {
             return
         }
         let client = new HTTPClient()
-
+        console.log(data)
         client.login(data.email, data.password)
             .then(res => {
                 const {id, userName} = res.data.user
@@ -59,28 +59,35 @@ const LoginForm = () => {
             })
         setData({})
     }
-    return <div>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-            {errors.error && <small>{errors.error}*</small>}
-            <div>
-                <label htmlFor="email">Email </label>
-                {errors.email && <small>{errors.email}*</small>}
-                <input 
-                    type="email" name="email" value={data.email || ""} onChange={handleChange} required={true} 
-                />
+    return (
+        <div>
+            <div className="min-h-72 min-w-96 border rounded flex flex-col justify-center items-center shadow-md">
+                <h1 className="text-2xl mb-4">Iniciar Sesión</h1>
+                <form onSubmit={handleSubmit}>
+                    {errors.error && <small className="text-red-800 text-sm">{errors.error}*</small>}
+                    <div className="mb-2 flex flex-col">
+                        <label htmlFor="email">Correo </label>
+                        {errors.email && <small className="text-red-800 text-sm">{errors.email}*</small>}
+                        <input 
+                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                            type="email" name="email" value={data.email || ""} onChange={handleChange} required={true} 
+                        />
+                    </div>
+                    <div className="mb-8 flex flex-col">
+                        <label htmlFor="password">Contraseña </label>
+                        {errors.password && <small className="text-red-800 text-sm">{errors.password}*</small>}
+                        <input 
+                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                            type="password" name="password" value={data.password || ""} onChange={handleChange} required={true} minLength={5} 
+                        />
+                    </div>
+                    <div>
+                        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-28 rounded" type="submit">Iniciar Sesión</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label htmlFor="password">Password </label>
-                {errors.password && <small>{errors.password}*</small>}
-                <input 
-                    type="password" name="password" value={data.password || ""} onChange={handleChange} required={true} minLength={5} 
-                />
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        
+    )
 }
 export default LoginForm

@@ -20,6 +20,12 @@ const getOneEstate = (req, res) => {
         .catch(err => res.status(500).json(err))
 }
 
+getEstateByAvailableFor = (req, res) => {
+    Estate.find({availableFor: req.params.availableFor})
+        .then(estate => res.json(estate))
+        .catch(err => res.status(400).json(err))
+}
+
 const createEstate = (req, res) => {
     const {title, description, owner, address, coordinates, price, images, bedrooms, bathrooms, rooms, availableFor} = req.body;
     Estate.create({
@@ -54,6 +60,7 @@ const deleteEstate = (req, res) => {
 module.exports = {
     getAllEstates,
     getOneEstate,
+    getEstateByAvailableFor,
     // getEstateByOwner,
     // getEstateByTitle,
     createEstate,

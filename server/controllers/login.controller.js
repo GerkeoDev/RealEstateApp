@@ -59,6 +59,10 @@ const login = async (req, res) => {
     try {
         let user = await User.findOne({email: data.email})
 
+        if (!user) {
+            return res.status(400).json({error: "El correo no está registrado"});
+        }
+
         let samePassword = await bcrypt.compareSync(data.password, user.password);
 
         if (samePassword){

@@ -5,11 +5,9 @@ const Home = () => {
 
     return (
         <div>
-            <div>
-                <Navbar
-                    section='inicio'
-                />
-            </div>
+            <Navbar
+                section='inicio'
+            />
             <div className='home-content'>
                 <h1>Explore<br/>las mejores<br/>opciones!</h1>
                 <img src={require('../../images/HousePic1.jpg')} alt='Imagen de una casa para la página Inicio' width={1000}></img>

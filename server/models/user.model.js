@@ -16,7 +16,6 @@ const UserSchema =  new mongoose.Schema({
     },
     postedEstates: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Estate',
         default: []
     },
 }, {timestamps: true})

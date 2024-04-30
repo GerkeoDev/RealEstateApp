@@ -62,39 +62,43 @@ const RegisterForm = () => {
                 console.log(err)
             })
     }
-    return <div className="custom-register-form">
-        <h1>Register</h1>
+    return <div className="custom-register-form border rounded flex flex-col justify-center items-center shadow-md">
+        <h1 className="text-2xl mb-4">Registrarse</h1>
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="userName">User Name </label>
-                {errors.userName && <small>{errors.userName}*</small>}
+            <div className="mb-2 flex flex-col">
+                <label htmlFor="userName">Nombre de usuario </label>
+                {errors.userName && <small className="text-red-800 text-sm">{errors.userName}*</small>}
                 <input
+                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
                     type="name" name="userName" value={data.userName || ""} onChange={handleChange} required={true} 
                 />
             </div>
-            <div>
-                <label htmlFor="email">Email </label>
-                {errors.email && <small>{errors.email}*</small>}
+            <div className="mb-2 flex flex-col">
+                <label htmlFor="email">Correo </label>
+                {errors.email && <small className="text-red-800 text-sm">{errors.email}*</small>}
                 <input
+                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
                     type="email" name="email" value={data.email || ""} onChange={handleChange} required={true} 
                 />
             </div>
-            <div>
-                <label htmlFor="password">Password </label>
-                {errors.password && <small>{errors.password}*</small>}
+            <div className="mb-2 flex flex-col">
+                <label htmlFor="password">Contraseña </label>
+                {errors.password && <small className="text-red-800 text-sm">{errors.password}*</small>}
                 <input
+                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
                     type="password" name="password" value={data.password || ""} onChange={handleChange} required={true} minLength={5} 
                 />
             </div>
-            <div>
-                <label htmlFor="password2">Confirm password </label>
-                {errors.password2 && <small>{errors.password2}*</small>}
+            <div className="mb-8 flex flex-col">
+                <label htmlFor="password2">Confirmar contraseña </label>
+                {errors.password2 && <small className="text-red-800 text-sm">{errors.password2}*</small>}
                 <input
+                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
                     type="password" name="password2" value={data.password2 || ""} onChange={handleChange} required={true} minLength={5} 
                 />
             </div>
             <div>
-                <button type="submit">Register</button>
+                <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-28 rounded" type="submit">Registrarse</button>
             </div>
         </form>
     </div>
