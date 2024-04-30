@@ -1,13 +1,14 @@
-import { useContext } from "react"
-import LoginForm from "../components/LoginForm/LoginForm"
-import RegisterForm from "../components/RegisterForm/RegisterForm"
-import { Context } from "../PageRouter"
-import { useNavigate } from "react-router-dom"
-import Navbar from "../components/Navbar/Navbar"
+import { useContext } from "react";
+import LoginForm from "../components/LoginForm/LoginForm";
+import RegisterForm from "../components/RegisterForm/RegisterForm";
+import { Context } from "../PageRouter";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 
 const LoginPage = () => {
-    const { user } = useContext(Context)
-    const navigate = useNavigate()
+    const { user } = useContext(Context);
+    const navigate = useNavigate();
+
     return (
         <div>
             <Navbar />
@@ -31,6 +32,7 @@ const LoginPage = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
-export default LoginPage
+
+export default LoginPage;
