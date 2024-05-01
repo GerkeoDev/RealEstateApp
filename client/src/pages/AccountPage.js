@@ -34,9 +34,10 @@ const AccountPage = () => {
                 <div className="w mx-auto flex flex-col justify-between">
                     <h1 className="text-4xl text-center mb-8">Mi cuenta</h1>
                     { user.logged && <div className="flex flex-col ">
-                        <div className="text-xl mb-8 p-2 border">User name: {user.userName}</div>
+                        <div className="text-xl mb-8 p-2 border">Nombre de usuario: {user.userName}</div>
                         <div className="text-xl mb-8 p-2 border">
-                            <button className="w-20 bg-red-700 hover:bg-red-800 text-white font-bold py-2 rounded shadow-md" onClick={(event) => {handleLogout(event)}}>Log out</button>
+                            <button className="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-2 rounded shadow-md mr-2" onClick={(event) => {navigate("/mis-publicaciones")}}>Mis publicaciones</button>
+                            <button className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 rounded shadow-md" onClick={(event) => {handleLogout(event)}}>Cerrar sesión</button>
                         </div>
                     </div>
                     }

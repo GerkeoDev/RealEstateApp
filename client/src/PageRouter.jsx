@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import AccountPage from './pages/AccountPage';
 import Detail from './pages/Detail';
 import PublishPage from './pages/PublishPage';
+import MyPublicationsPage from './pages/MyPublicationsPage';
 
 export const Context = React.createContext()
 
@@ -32,12 +33,13 @@ const PageRouter = (props) => {
                     <Route index={true} path='/login' element={<LoginPage />}/>
                     <Route path='/home' element={<Home />}/>
                     <Route path='/comprar' element={<Comprar />}/>
-                    <Route path='/comprar/:property' element={<Detail />}/>
+                    <Route path='/comprar/:id' element={<Detail />}/>
                     <Route path='/alquilar' element={<Alquilar />}/>
-                    <Route path='/alquilar/:property' element={<Detail />}/>
+                    <Route path='/alquilar/:id' element={<Detail />}/>
                     <Route path='/buscar' element={<Buscar />}/>
                     <Route path='/cuenta' element={<AccountPage />}/>
                     <Route path='/publicar' element={<PublishPage />}/>
+                    <Route path='/mis-publicaciones' element={<MyPublicationsPage />}/>
                 </Routes>
             </Context.Provider>
         </BrowserRouter>

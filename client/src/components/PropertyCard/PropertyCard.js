@@ -6,7 +6,11 @@ const PropertyCard = ({property}) => {
     const navigate = useNavigate();
     
     const handleClick = () => {
-        navigate(`/${property.availableFor}/${property.title}`)
+        if(property.availableFor==="sale"){  
+            navigate(`/comprar/${property._id}`)
+        }else{
+            navigate(`/alquilar/${property._id}`)
+        }
     }
 
     return(

@@ -20,8 +20,14 @@ const getOneEstate = (req, res) => {
         .catch(err => res.status(500).json(err))
 }
 
-getEstateByAvailableFor = (req, res) => {
+const getEstateByAvailableFor = (req, res) => {
     Estate.find({availableFor: req.params.availableFor})
+        .then(estate => res.json(estate))
+        .catch(err => res.status(400).json(err))
+}
+
+const getEstateByOwner = (req, res) => {
+    Estate.find({owner: req.params.owner})
         .then(estate => res.json(estate))
         .catch(err => res.status(400).json(err))
 }
@@ -61,7 +67,7 @@ module.exports = {
     getAllEstates,
     getOneEstate,
     getEstateByAvailableFor,
-    // getEstateByOwner,
+    getEstateByOwner,
     // getEstateByTitle,
     createEstate,
     updateEstate,

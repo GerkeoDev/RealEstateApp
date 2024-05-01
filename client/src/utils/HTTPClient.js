@@ -23,12 +23,16 @@ class HTTPClient {
         return this.instance.post("/logout")
     }
 
-    // getEstates(){
-    //     return this.instance.get("/estates/")
-    // }
+    getEstate(id){
+        return this.instance.get(`/estate/${id}`)
+    }
 
     getEstatesByAvailableFor(availableFor){
-        return this.instance.get(`/estates/${availableFor}`)
+        return this.instance.get(`/estates/available-for/${availableFor}`)
+    }
+
+    getEstatesByOwner(owner){
+        return this.instance.get(`/estates/owner/${owner}`)
     }
 
     publishEstate(property){
