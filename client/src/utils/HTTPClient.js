@@ -30,6 +30,10 @@ class HTTPClient {
     getEstatesByAvailableFor(availableFor){
         return this.instance.get(`/estates/${availableFor}`)
     }
+
+    publishEstate(property){
+        return this.instance.post("/estate", property)
+    }
     
 }
 

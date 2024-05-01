@@ -30,7 +30,7 @@ const Buscar = () => {
                 <div className='buscar-one-box'>
                     <h1>Vender</h1>
                     <p>Mira las opciones disponibles para vender/alquilar una propiedad</p>
-                    <button>Vender →</button>
+                    <button onClick={() => {navigate('/publicar')}}>Vender →</button>
                 </div>
             </div>
         </div>

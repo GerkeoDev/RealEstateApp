@@ -8,22 +8,25 @@ import Buscar from './pages/BuscarPage/Buscar';
 import LoginPage from './pages/LoginPage';
 import AccountPage from './pages/AccountPage';
 import Detail from './pages/Detail';
+import PublishPage from './pages/PublishPage';
 
 export const Context = React.createContext()
 
 const PageRouter = (props) => {
     const [user, setUser] = useLocalStorage('user', {})
-
+    const [latLng, setLatLng] = useLocalStorage('latLng', { lat: -25.28646, lng: -57.647 })
 
     useEffect(()=> {
-        
+        console.log(latLng)
     }, [])
 
     return(
         <BrowserRouter>
             <Context.Provider value={{
                 user: user,
-                setUser: setUser
+                setUser: setUser,
+                latLng: latLng,
+                setLatLng: setLatLng
             }}>
                 <Routes>
                     <Route index={true} path='/login' element={<LoginPage />}/>
@@ -34,6 +37,7 @@ const PageRouter = (props) => {
                     <Route path='/alquilar/:property' element={<Detail />}/>
                     <Route path='/buscar' element={<Buscar />}/>
                     <Route path='/cuenta' element={<AccountPage />}/>
+                    <Route path='/publicar' element={<PublishPage />}/>
                 </Routes>
             </Context.Provider>
         </BrowserRouter>
