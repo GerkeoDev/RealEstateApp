@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar';
 import './Home.style.css';
+import HousePic1 from '../../images/HousePic1.jpg';
 
 const Home = () => {
 
@@ -10,7 +11,7 @@ const Home = () => {
             />
             <div className='home-content'>
                 <h1>Explore<br/>las mejores<br/>opciones!</h1>
-                <img src={require('../../images/HousePic1.jpg')} alt='Imagen de una casa para la página Inicio'></img>
+                <img src={HousePic1} alt='Imagen de una casa para la página Inicio'></img>
             </div>
         </div>
     );

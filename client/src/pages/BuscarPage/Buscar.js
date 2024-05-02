@@ -1,6 +1,7 @@
 import Navbar from '../../components/Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import './Buscar.style.css';
+import HousePic2 from '../../images/HousePic2.jpg';
 
 const Buscar = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Buscar = () => {
                 />
             </div>
             <div className='buscar-content'>
-                <img src={require('../../images/HousePic2.jpg')} alt='Imagen de una casa para la página Inicio'></img>
+                <img src={HousePic2} alt='Imagen de una casa para la página Inicio'></img>
                 <h1>Nosotros te<br/>podemos<br/>ayudar!</h1>
             </div>
             <div className='buscar-box'>

@@ -33,7 +33,7 @@ const getEstateByOwner = (req, res) => {
 }
 
 const createEstate = (req, res) => {
-    const {title, description, owner, address, coordinates, price, images, bedrooms, bathrooms, rooms, availableFor} = req.body;
+    const {title, description, owner, address, coordinates, price, image, bedrooms, bathrooms, rooms, availableFor} = req.body;
     Estate.create({
         title,
         description,
@@ -41,7 +41,7 @@ const createEstate = (req, res) => {
         address,
         coordinates,
         price,
-        images,
+        image,
         bedrooms,
         bathrooms,
         rooms,

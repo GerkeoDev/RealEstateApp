@@ -3,9 +3,11 @@ import MapLocation from "../components/MapLocation/MapLocation"
 import Navbar from "../components/Navbar/Navbar"
 import { Context } from "../PageRouter"
 import { useNavigate } from "react-router-dom"
+import HTTPClient from "../utils/HTTPClient"
 
 const PublishPage = () => {
     const {user, latLng} = useContext(Context);
+    const [file, setFile] = useState()
     const [publicationData, setPublicationData] = useState({
         title: "",
         city: "",
@@ -15,7 +17,7 @@ const PublishPage = () => {
         address: "",
         coordinates: latLng,
         price: 5000,
-        images: [],
+        image: "",
         bedrooms: 0,
         bathrooms: 0,
         rooms: 1,
@@ -34,13 +36,42 @@ const PublishPage = () => {
             [e.target.name]: e.target.value
         });
     }
+    const handleImageChange = e => {
+         setFile(e.target.files[0])
+    }
     const handleSubmit = e => {
         e.preventDefault();
         if(!user.logged){
             navigate('/login');
         }else{
             console.log(publicationData);
-            // navigate('/mis-publicaciones');
+            let client = new HTTPClient();
+
+            const formData = new FormData()
+            formData.append('file', file)
+            client.publishImage(formData)
+                .then(res => {
+                    
+                    const imageUrl = res.data.imageUrl;
+                    const updatedPublicationData = {
+                        ...publicationData,
+                        image: imageUrl
+                    };
+                    console.log(updatedPublicationData)
+                    client.publishEstate(updatedPublicationData)
+                    .then(res => {
+                        console.log(res);
+                        if(res.status === 200){
+                            navigate('/mis-publicaciones');
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
     useEffect(() => {
@@ -62,7 +93,7 @@ const PublishPage = () => {
                                 <td className="pl-2 py-2">
                                     <input  
                                             className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="title" id="title" placeholder="Título" required={true}
+                                            type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
                                             value={publicationData.title} onChange={handleChange}/>
                                 </td> 
                             </tr>
@@ -96,9 +127,9 @@ const PublishPage = () => {
                             <tr>
                                 <td>Descripción:</td> 
                                 <td className="pl-2">
-                                    <textarea  
+                                    <input  
                                             className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full h-32"
-                                            type="text" name="description" id="description" placeholder="Breve descripción" required={true}
+                                            type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20}
                                             value={publicationData.description} onChange={handleChange}/>
                                 </td> 
                             </tr>
@@ -145,8 +176,10 @@ const PublishPage = () => {
                                     <td>Imagen:</td> 
                                     <td className="pl-2">
                                         <input 
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="images" id="images" required={true} />
+                                            className="py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="file" name="image" id="image" accept="image/*" multiple
+                                            onChange={handleImageChange}
+                                            required={true} />
                                     </td>
                                 </tr>
                             </div>

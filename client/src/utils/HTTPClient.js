@@ -39,6 +39,9 @@ class HTTPClient {
         return this.instance.post("/estate", property)
     }
     
+    publishImage(file){
+        return this.instance.post("/upload", file)
+    }
 }
 
 export default HTTPClient

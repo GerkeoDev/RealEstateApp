@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import Navbar from "../components/Navbar/Navbar"
 import HTTPClient from "../utils/HTTPClient"
 import { useParams } from "react-router-dom"
-import MapLocation from "../components/MapLocation/MapLocation"
 import MapDetailLocation from "../components/MapDetailLocation/MapDetailLocation"
 
 const Detail = () => {
@@ -29,7 +28,7 @@ const Detail = () => {
                     <div className="flex justify-center">
                         <div className="border p-8 shadow-md mr-4">
                             <h1 className="text-3xl mb-4">{data.title}</h1>
-                            <img src={data.images[0]} alt={data.title} className="h-96 rounded-md"/>
+                            <img src={data.image} alt={data.title} className="h-96 rounded-md"/>
                         </div>
                         <div className="border flex flex-col justify-between p-8 shadow-md">
                             <div>

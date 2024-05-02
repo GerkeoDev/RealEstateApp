@@ -27,10 +27,10 @@ const EstateSchema =  new mongoose.Schema({
         type: Number,
         required: [true, "The estate needs a price"],
     },
-    images: [{
+    image: {
         type: String,
-        required: [true, "The estate needs images"],
-    }],
+        required: [true, "The estate needs a image"],
+    },
     bedrooms: {
         type: Number,
         required: [true, "The estate needs a bedroom number"],
