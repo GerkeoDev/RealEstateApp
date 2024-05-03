@@ -19,7 +19,7 @@ app.use("/api/", estateRouter)
 const {multerRouter} = require("./routes/multer.routes")
 app.use("/api/", multerRouter)
 
-app.use('/static', express.static('upload'));
+app.use('/static', express.static('uploads'));
 
 app.listen(8000, () =>{
     console.log("Listening at Port 8000")

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import HTTPClient from "../utils/HTTPClient"
 
 const PublishPage = () => {
-    const {user, latLng} = useContext(Context);
+    const {user, latLng, setLatLng} = useContext(Context);
     const [file, setFile] = useState()
     const [publicationData, setPublicationData] = useState({
         title: "",
@@ -44,23 +44,20 @@ const PublishPage = () => {
         if(!user.logged){
             navigate('/login');
         }else{
-            console.log(publicationData);
             let client = new HTTPClient();
 
             const formData = new FormData()
             formData.append('file', file)
             client.publishImage(formData)
                 .then(res => {
-                    
                     const imageUrl = res.data.imageUrl;
                     const updatedPublicationData = {
                         ...publicationData,
-                        image: imageUrl
+                        image: `http://localhost:8000/static/${imageUrl}`
                     };
-                    console.log(updatedPublicationData)
                     client.publishEstate(updatedPublicationData)
                     .then(res => {
-                        console.log(res);
+                        setLatLng({ lat: -25.28646, lng: -57.647 })
                         if(res.status === 200){
                             navigate('/mis-publicaciones');
                         }
