@@ -14,7 +14,7 @@ const PropertyCard = ({property}) => {
     }
 
     return(
-        <div className="border border-gray-300 rounded-lg overflow-hidden shadow-md flex flex-col mb-4">
+        <div className="border rounded border-gray-800 overflow-hidden shadow-2xl flex flex-col mb-4 bg-gray-800 bg-opacity-70 p-4 text-white">
             <div className="h-40 overflow-hidden">
                 <img className="object-cover w-full h-full" src={property.image} alt={property.title}/>
             </div>
@@ -24,7 +24,7 @@ const PropertyCard = ({property}) => {
             </div>
             <div className="flex p-2 justify-between items-center">
                 <p className="text-blue-600">{property.price}$</p>
-                <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded" onClick={handleClick}>Ver más</button>
+                <button className="bg-blue-800 hover:bg-blue-900 font-bold py-1 px-4 rounded" onClick={handleClick}>Ver más</button>
             </div>
         </div>
     );

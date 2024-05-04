@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar"
 import { Context } from "../PageRouter"
 import { useNavigate } from "react-router-dom"
 import HTTPClient from "../utils/HTTPClient"
+import HousePic from '../images/HousePic3.jpg'
 
 const PublishPage = () => {
     const {user, latLng, setLatLng} = useContext(Context);
@@ -78,140 +79,142 @@ const PublishPage = () => {
         })
     },[latLng])
     return (
-        <div>
-            <Navbar />
-            <div className="pt-16 flex justify-center">
-                <form className="flex" onSubmit={handleSubmit}>
-                    <div className="border rounded flex flex-col justify-start shadow-md mr-8 p-8">
-                        <h1 className="text-3xl text-center mb-4" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
-                        <div>
-                            <tr>
-                                <td>Título:</td> 
-                                <td className="pl-2 py-2">
-                                    <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
-                                            value={publicationData.title} onChange={handleChange}/>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Ciudad:</td> 
-                                <td className="pl-2 pb-2">
-                                    <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="city" id="city" placeholder="Ciudad" required={true}
-                                            value={publicationData.city} onChange={handleChange}/>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Barrio:</td> 
-                                <td className="pl-2 pb-2">
-                                    <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
-                                            value={publicationData.neighborhood} onChange={handleChange}/>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Dirección:</td> 
-                                <td className="pl-2 pb-2">
-                                    <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
-                                            value={publicationData.address} onChange={handleChange}/>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Descripción:</td> 
-                                <td className="pl-2">
-                                    <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full h-32"
-                                            type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20}
-                                            value={publicationData.description} onChange={handleChange}/>
-                                </td> 
-                            </tr>
-                        </div>
-                    </div>
-                    <div className="border rounded flex flex-col shadow-md p-8">
-                        <h1 className="text-3xl text-center mb-4">Detalles de la Propiedad</h1>
-                        <div className="flex">
+        <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
+            <div className='bg-gray-800 bg-opacity-50 h-full'>
+                <Navbar />
+                <div className="pt-16 flex justify-center">
+                    <form className="flex" onSubmit={handleSubmit}>
+                        <div className="rounded flex flex-col justify-start shadow-md mr-8 p-8  bg-gray-800 bg-opacity-70">
+                            <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
                             <div>
-                                <p>Ubicación:</p>
-                                <div className="mr-2 mb-2">
-                                    <MapLocation />
+                                <tr>
+                                    <td className="text-white">Título:</td> 
+                                    <td className="pl-2 py-2">
+                                        <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
+                                                value={publicationData.title} onChange={handleChange}/>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td className="text-white">Ciudad:</td> 
+                                    <td className="pl-2 pb-2">
+                                        <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="city" id="city" placeholder="Ciudad" required={true}
+                                                value={publicationData.city} onChange={handleChange}/>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td className="text-white">Barrio:</td> 
+                                    <td className="pl-2 pb-2">
+                                        <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
+                                                value={publicationData.neighborhood} onChange={handleChange}/>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td className="text-white">Dirección:</td> 
+                                    <td className="pl-2 pb-2">
+                                        <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
+                                                value={publicationData.address} onChange={handleChange}/>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td className="text-white">Descripción:</td> 
+                                    <td className="pl-2">
+                                        <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full h-32"
+                                                type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
+                                                value={publicationData.description} onChange={handleChange}/>
+                                    </td> 
+                                </tr>
+                            </div>
+                        </div>
+                        <div className="rounded flex flex-col shadow-md p-8 bg-gray-800 bg-opacity-70">
+                            <h1 className="text-3xl text-center mb-4 text-white">Detalles de la Propiedad</h1>
+                            <div className="flex">
+                                <div>
+                                    <p className="text-white">Ubicación:</p>
+                                    <div className="mr-2 mb-2">
+                                        <MapLocation />
+                                    </div>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td className="text-white">Habitaciones:</td> 
+                                        <td className="py-2 pl-2">
+                                            <input 
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="number" name="rooms" id="rooms" required={true} min={1}
+                                                value={publicationData.rooms} onChange={handleChange}/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Dormitorios:</td> 
+                                        <td className="pb-2 pl-2">
+                                            <input 
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="number" name="bedrooms" id="bedrooms" required={true}
+                                                value={publicationData.bedrooms} onChange={handleChange}/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Baños:</td> 
+                                        <td className="pb-2 pl-2">
+                                            <input
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="number" name="bathrooms" id="bathrooms" required={true}
+                                                value={publicationData.bathrooms} onChange={handleChange}/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Imagen:</td> 
+                                        <td className="pl-2">
+                                            <input 
+                                                className="py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="file" name="image" id="image" accept="image/*" multiple
+                                                onChange={handleImageChange}
+                                                required={true} />
+                                        </td>
+                                    </tr>
                                 </div>
                             </div>
-                            <div>
-                                <tr>
-                                    <td>Habitaciones:</td> 
-                                    <td className="py-2 pl-2">
-                                        <input 
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="number" name="rooms" id="rooms" required={true} min={1}
-                                            value={publicationData.rooms} onChange={handleChange}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Dormitorios:</td> 
-                                    <td className="pb-2 pl-2">
-                                        <input 
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="number" name="bedrooms" id="bedrooms" required={true}
-                                            value={publicationData.bedrooms} onChange={handleChange}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Baños:</td> 
-                                    <td className="pb-2 pl-2">
-                                        <input
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="number" name="bathrooms" id="bathrooms" required={true}
-                                            value={publicationData.bathrooms} onChange={handleChange}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Imagen:</td> 
-                                    <td className="pl-2">
-                                        <input 
-                                            className="py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="file" name="image" id="image" accept="image/*" multiple
-                                            onChange={handleImageChange}
-                                            required={true} />
-                                    </td>
-                                </tr>
+                            <div className="flex justify-between">
+                                <div>
+                                    <tr>
+                                        <td className="text-white">Disponibilidad:</td> 
+                                        <td className="pb-2 pl-2">
+                                            <select 
+                                                onChange={handleChangeAvailableFor} 
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500"
+                                                value={publicationData.availableFor}
+                                            >
+                                                <option value="sale">Vender</option>
+                                                <option value="rent">Alquilar</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Precio:</td> 
+                                        <td className="pl-2">
+                                            <input 
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="number" name="price" id="price" required={true} min={5000}
+                                                value={publicationData.price} onChange={handleChange}/>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div className="flex flex-col justify-end">
+                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Publicar</button>
+                                </div>
                             </div>
                         </div>
-                        <div className="flex justify-between">
-                            <div>
-                                <tr>
-                                    <td>Disponibilidad:</td> 
-                                    <td className="pb-2 pl-2">
-                                        <select 
-                                            onChange={handleChangeAvailableFor} 
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500"
-                                            value={publicationData.availableFor}
-                                        >
-                                            <option value="sale">Vender</option>
-                                            <option value="rent">Alquilar</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Precio:</td> 
-                                    <td className="pl-2">
-                                        <input 
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="number" name="price" id="price" required={true} min={5000}
-                                            value={publicationData.price} onChange={handleChange}/>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div className="flex flex-col justify-end">
-                                <button type="submit" className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-4 rounded">Publicar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     )
