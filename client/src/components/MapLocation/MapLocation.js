@@ -1,22 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
-import { Context } from '../../PageRouter';
 
 
-const MapLocation = () => {
-    const {latLng, setLatLng} = useContext(Context);
+const MapLocation = ({latLng, setLatLng}) => {
     const libraries = ['places'];
     const [markerPosition, setMarkerPosition] = useState(latLng);
     const handleMapClick = e => {
         setMarkerPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        if (setLatLng) {
+            setLatLng({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        }
     }
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries: libraries
     });
     useEffect(()=>{
-        setLatLng(markerPosition);
-    },[markerPosition]);
+        setMarkerPosition(latLng);
+    },[latLng]);
     return  <div className='text-sm'>
         {isLoaded?
             <GoogleMap

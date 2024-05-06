@@ -1,36 +1,29 @@
-import { useContext, useEffect, useState } from "react"
-import MapLocation from "../components/MapLocation/MapLocation"
-import Navbar from "../components/Navbar/Navbar"
-import { Context } from "../PageRouter"
-import { useNavigate } from "react-router-dom"
-import HTTPClient from "../utils/HTTPClient"
 import HousePic from '../images/HousePic3.jpg'
+import { useNavigate, useParams } from "react-router-dom"
+import Navbar from "../components/Navbar/Navbar"
+import { useContext, useEffect, useState } from 'react'
+import MapLocation from '../components/MapLocation/MapLocation'
+import HTTPClient from '../utils/HTTPClient'
+import { Context } from '../PageRouter'
 
-const PublishPage = () => {
-    const {user, latLng, setLatLng} = useContext(Context);
+
+const EditPage = () => {
+    const {user} = useContext(Context)
+    const {id} = useParams()
+    const [publicationData, setPublicationData] = useState([])
     const [file, setFile] = useState()
-    const [publicationData, setPublicationData] = useState({
-        title: "",
-        city: "",
-        neighborhood: "",
-        description: "",
-        owner: user.userName,
-        address: "",
-        coordinates: latLng,
-        price: 5000,
-        image: "",
-        bedrooms: 0,
-        bathrooms: 0,
-        rooms: 1,
-        availableFor: "sale"
-    });
-    const navigate = useNavigate();
-    const handleChangeAvailableFor = e => {
-        setPublicationData({
-            ...publicationData,
-            availableFor: e.target.value
-        });
-    }
+    const navigate = useNavigate()
+    const [loaded, setLoaded] = useState(false)
+    useEffect(() => {
+        let client = new HTTPClient()
+
+        client.getEstate(id)
+            .then(res => {
+                setPublicationData(res.data)
+                setLoaded(true)
+            })
+            .catch(err => console.log(err))
+    },[])
     const handleChange = e => {
         setPublicationData({
             ...publicationData,
@@ -38,53 +31,69 @@ const PublishPage = () => {
         });
     }
     const handleImageChange = e => {
-         setFile(e.target.files[0])
+        setFile(e.target.files[0])
+    }
+    const handleChangeAvailableFor = e => {
+        setPublicationData({
+            ...publicationData,
+            availableFor: e.target.value
+        });
     }
     const handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
         if(!user.logged){
             navigate('/login');
         }else{
             let client = new HTTPClient();
-
-            const formData = new FormData()
-            formData.append('file', file)
-            client.publishImage(formData)
-                .then(res => {
-                    const imageUrl = res.data.imageUrl;
-                    const updatedPublicationData = {
-                        ...publicationData,
-                        image: `http://localhost:8000/static/${imageUrl}`
-                    };
-                    client.publishEstate(updatedPublicationData)
+            if(!file){
+                client.updateEstate(id, publicationData)
                     .then(res => {
-                        setLatLng({ lat: -25.28646, lng: -57.647 })
                         if(res.status === 200){
-                            window.alert("Publicación exitosa!")
+                            window.alert("Publicación actualizada correctamente!")
                             navigate('/mis-publicaciones');
                         }
                     })
                     .catch(err => {
                         console.log(err);
                     });
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            }else{
+                const formData = new FormData()
+                formData.append('file', file)
+                client.publishImage(formData)
+                    .then(res => {
+                        const imageUrl = res.data.imageUrl;
+                        const updatedPublicationData = {
+                            ...publicationData,
+                            image: `http://localhost:8000/static/${imageUrl}`
+                        };
+                        client.updateEstate(id, updatedPublicationData)
+                        .then(res => {
+                            if(res.status === 200){
+                                window.alert("Publicación actualizada correctamente!")
+                                navigate('/mis-publicaciones');
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }    
         }
     }
-    useEffect(() => {
-        setPublicationData({
-            ...publicationData,
-            coordinates: latLng
-        })
-    },[latLng])
     return (
         <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='bg-gray-800 bg-opacity-50 h-full'>
                 <Navbar />
+                {!loaded ?
+                <div>
+                    <h1>Cargando...</h1>
+                </div>
+                :
                 <div className="pt-16 flex flex-col items-center">
-                    <h1 className="text-4xl text-white pb-8">Publicar</h1>
+                    <h1 className="text-4xl text-white pb-8">Editar Publicación</h1>
                     <form className="flex" onSubmit={handleSubmit}>
                         <div className="rounded flex flex-col justify-start shadow-md mr-8 p-8  bg-gray-800 bg-opacity-70">
                             <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
@@ -142,7 +151,10 @@ const PublishPage = () => {
                                 <div>
                                     <p className="text-white">Ubicación:</p>
                                     <div className="mr-2 mb-2">
-                                        <MapLocation latLng={latLng} setLatLng={e => setLatLng(e)}/>
+                                        <MapLocation latLng={publicationData.coordinates} setLatLng={e => setPublicationData({
+                                            ...publicationData,
+                                            coordinates: e
+                                        })}/>
                                     </div>
                                 </div>
                                 <div>
@@ -179,8 +191,7 @@ const PublishPage = () => {
                                             <input 
                                                 className="py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
                                                 type="file" name="image" id="image" accept="image/*" multiple
-                                                onChange={handleImageChange}
-                                                required={true} />
+                                                onChange={handleImageChange}/>
                                         </td>
                                     </tr>
                                 </div>
@@ -211,14 +222,15 @@ const PublishPage = () => {
                                     </tr>
                                 </div>
                                 <div className="flex flex-col justify-end">
-                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Publicar</button>
+                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Guardar  </button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
+                }
             </div>
         </div>
     )
 }
-export default PublishPage
+export default EditPage

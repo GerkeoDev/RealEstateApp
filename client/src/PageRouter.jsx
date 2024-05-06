@@ -10,6 +10,7 @@ import AccountPage from './pages/AccountPage';
 import Detail from './pages/Detail';
 import PublishPage from './pages/PublishPage';
 import MyPublicationsPage from './pages/MyPublicationsPage';
+import EditPage from './pages/EditPage';
 
 export const Context = React.createContext()
 
@@ -40,6 +41,7 @@ const PageRouter = (props) => {
                     <Route path='/cuenta' element={<AccountPage />}/>
                     <Route path='/publicar' element={<PublishPage />}/>
                     <Route path='/mis-publicaciones' element={<MyPublicationsPage />}/>
+                    <Route path='/edit/:id' element={<EditPage />}/>
                 </Routes>
             </Context.Provider>
         </BrowserRouter>

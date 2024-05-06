@@ -42,6 +42,14 @@ class HTTPClient {
     publishImage(file){
         return this.instance.post("/upload", file)
     }
+
+    updateEstate(id, property){
+        return this.instance.put(`/estate/${id}`, property)
+    }
+
+    deleteEstate(id){
+        return this.instance.delete(`/estate/${id}`)
+    }
 }
 
 export default HTTPClient

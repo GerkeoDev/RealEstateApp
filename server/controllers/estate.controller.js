@@ -33,11 +33,13 @@ const getEstateByOwner = (req, res) => {
 }
 
 const createEstate = (req, res) => {
-    const {title, description, owner, address, coordinates, price, image, bedrooms, bathrooms, rooms, availableFor} = req.body;
+    const {title, description, owner, city, neighborhood, address, coordinates, price, image, bedrooms, bathrooms, rooms, availableFor} = req.body;
     Estate.create({
         title,
         description,
         owner,
+        city,
+        neighborhood,
         address,
         coordinates,
         price,
@@ -52,7 +54,9 @@ const createEstate = (req, res) => {
 }
 
 const updateEstate = (req, res) => {
-    Estate.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators: true})
+    const {title, description, owner, city, neighborhood, address, coordinates, price, image, bedrooms, bathrooms, rooms, availableFor} = req.body;
+    const body = {title, description, owner, city, neighborhood, address, coordinates, price, image, bedrooms, bathrooms, rooms, availableFor}
+    Estate.findOneAndUpdate({_id: req.params.id}, body, {new: true, runValidators: true})
         .then(updatedEstate => res.json(updatedEstate))
         .catch(err => res.status(400).json(err))
 }
@@ -68,7 +72,6 @@ module.exports = {
     getOneEstate,
     getEstateByAvailableFor,
     getEstateByOwner,
-    // getEstateByTitle,
     createEstate,
     updateEstate,
     deleteEstate

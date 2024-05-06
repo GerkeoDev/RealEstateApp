@@ -10,6 +10,13 @@ const MyPublicationsPage = () => {
     const [loading, setLoading] = useState(true)
     const [publications, setPublications] = useState([])
     const navigate = useNavigate()
+    const deletePublication = id => {
+        let client = new HTTPClient()
+
+        client.deleteEstate(id)
+            .then(res => setPublications(prevPublications => prevPublications.filter(pub => pub._id !== id)))
+            .catch(err => console.log(err))
+    }
     useEffect(() => {
         if(user.logged){
             let client = new HTTPClient()
@@ -37,16 +44,21 @@ const MyPublicationsPage = () => {
                             <h1>Cargando...</h1>
                         </div>
                         :publications.length === 0?
-                        <div>
-                            <h1>No tienes publicaciones</h1>
+                        <div className="pt-8">
+                            <div className="w rounded h-screen mx-auto p-4">
+                                <h1 className="text-4xl mb-8 text-center text-white">No tienes publicaciones</h1>
+                                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => navigate("/home")}>
+                                    Go to home
+                                </button>
+                            </div>
                         </div>
                         :
                         <div className="pt-8">
-                            <div className="w rounded h-screen mx-auto flex flex-col justify-between bg-gray-800  bg-opacity-70 p-4">
+                            <div className="w rounded mx-auto flex flex-col justify-between bg-gray-800  bg-opacity-70 p-4">
                                 <h1 className="text-4xl mb-8 text-center text-white">Mis publicaciones</h1>
                                 <div>
-                                    {publications.map((publication, index)=>
-                                        <div key={index} className="flex mb-4">
+                                    {publications.map((publication)=>
+                                        <div key={publication._id} className="flex mb-4">
                                             <div className="w-full rounded-md shadow-md bg-gray-800 bg-opacity-70 p-4 flex">
                                                 <img 
                                                     className="h-40 w-40 rounded mr-8"
@@ -60,12 +72,12 @@ const MyPublicationsPage = () => {
                                                     <div>
                                                         <button 
                                                             className="py-1 px-2 rounded shadow-md bg-sky-500 hover:bg-sky-600 mr-2"
-                                                            onClick={()=>navigate(`/edit/${publication.title}`)}>Editar</button>
+                                                            onClick={()=>navigate(`/edit/${publication._id}`)}>Editar</button>
                                                         <button 
                                                             className="py-1 px-2 rounded shadow-md bg-red-600 hover:bg-red-700"
                                                             onClick={()=>{
                                                                 if(window.confirm(`Seguro que quieres eliminar ${publication.title}?`)){
-                                                                    console.log("Eliminado", publication.title)
+                                                                    deletePublication(publication._id)
                                                                 }
                                                             }}>Eliminar</button>
                                                     </div>

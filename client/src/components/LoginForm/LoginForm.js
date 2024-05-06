@@ -65,12 +65,12 @@ const LoginForm = () => {
 
     return(
         <div>
-            <div className="min-h-72 min-w-96 border rounded flex flex-col justify-center items-center shadow-md">
-                <h1 className="text-2xl mb-4">Iniciar Sesión</h1>
+            <div className="min-h-72 min-w-96 rounded flex flex-col justify-center items-center shadow-md bg-gray-800 bg-opacity-70">
+                <h1 className="text-2xl mb-4 text-white">Iniciar Sesión</h1>
                 <form onSubmit={handleSubmit}>
                     {errors.error && <small className="text-red-800 text-sm">{errors.error}*</small>}
                     <div className="mb-2 flex flex-col">
-                        <label htmlFor="email">Correo </label>
+                        <label htmlFor="email" className="text-white">Correo </label>
                         {errors.email && <small className="text-red-800 text-sm">{errors.email}*</small>}
                         <input 
                             className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
@@ -78,7 +78,7 @@ const LoginForm = () => {
                         />
                     </div>
                     <div className="mb-8 flex flex-col">
-                        <label htmlFor="password">Contraseña </label>
+                        <label htmlFor="password" className="text-white">Contraseña </label>
                         {errors.password && <small className="text-red-800 text-sm">{errors.password}*</small>}
                         <input 
                             className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
@@ -86,7 +86,7 @@ const LoginForm = () => {
                         />
                     </div>
                     <div>
-                        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-28 rounded" type="submit">Iniciar Sesión</button>
+                        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-28 rounded" type="submit">Iniciar Sesión</button>
                     </div>
                 </form>
             </div>

@@ -14,7 +14,7 @@ const Comprar = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <div className="w rounded h-screen mx-auto flex flex-col bg-gray-800 bg-opacity-70 p-4">
+                    <div className="w rounded mx-auto flex flex-col bg-gray-800 bg-opacity-70 p-4">
                         <p className='text-white'>Inicio/Comprar</p>
                         <p className="text-xl text-white">Showing all {results} results</p>
                         <PropertyList availableFor="sale" results={setResults}/>

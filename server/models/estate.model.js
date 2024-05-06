@@ -15,6 +15,14 @@ const EstateSchema =  new mongoose.Schema({
         type: String,
         required: [true, "The estate needs an owner"],
     },
+    city: {
+        type: String,
+        required: [true, "The estate needs a city"],
+    },
+    neighborhood: {
+        type: String,
+        required: [true, "The estate needs a neighborhood"],
+    },
     address: {
         type: String,
         required: [true, "The estate needs an address"],
