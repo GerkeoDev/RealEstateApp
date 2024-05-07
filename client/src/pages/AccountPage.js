@@ -33,13 +33,13 @@ const AccountPage = () => {
             <div className='bg-gray-800 bg-opacity-50 h-full'>
                 <Navbar />
                 <div className="pt-8">
-                    <div className="w rounded mx-auto flex flex-col justify-between bg-gray-800 bg-opacity-70 p-4">
-                        <h1 className="text-4xl text-center mb-8 text-white">Mi cuenta</h1>
+                    <div className="w-max rounded mx-auto flex flex-col justify-between bg-gray-800 bg-opacity-70 p-4">
+                        <h1 className="text-4xl text-center mb-8 text-white">Mi Cuenta</h1>
                         { user.logged && <div className="flex flex-col ">
-                            <div className="text-xl mb-2 p-4 text-white">Nombre de usuario: {user.userName}</div>
-                            <div className="text-xl p-4">
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded shadow-md mr-2" onClick={(event) => {navigate("/mis-publicaciones")}}>Mis publicaciones</button>
-                                <button className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 rounded shadow-md" onClick={(event) => {handleLogout(event)}}>Cerrar sesión</button>
+                            <div className="text-xl mb-2 p-4 text-white">Nombre de Usuario: {user.userName}</div>
+                            <div className="flex flex-col mx-auto text-xl p-4">
+                                <button className="mx-auto w-52 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded shadow-md" onClick={(event) => {navigate("/mis-publicaciones")}}>Mis Publicaciones</button>
+                                <button className="mx-auto mt-2 w-52 bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 rounded shadow-md" onClick={(event) => {handleLogout(event)}}>Cerrar sesión</button>
                             </div>
                         </div>
                         }

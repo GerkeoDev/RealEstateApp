@@ -13,7 +13,7 @@ const Alquilar = () => {
                         section='alquilar'
                     />
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 h-screen">
                     <div className="w rounded mx-auto flex flex-col bg-gray-800 bg-opacity-70 p-4">
                         <p className='text-white'>Inicio/Alquilar</p>
                         <p className="text-xl text-white">Showing all {results} results</p>

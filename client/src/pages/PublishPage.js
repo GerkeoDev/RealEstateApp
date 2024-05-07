@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react"
-import MapLocation from "../components/MapLocation/MapLocation"
-import Navbar from "../components/Navbar/Navbar"
-import { Context } from "../PageRouter"
-import { useNavigate } from "react-router-dom"
-import HTTPClient from "../utils/HTTPClient"
-import HousePic from '../images/HousePic3.jpg'
+import { useContext, useEffect, useState } from "react";
+import MapLocation from "../components/MapLocation/MapLocation";
+import Navbar from "../components/Navbar/Navbar";
+import { Context } from "../PageRouter";
+import { useNavigate } from "react-router-dom";
+import HTTPClient from "../utils/HTTPClient";
+import HousePic from '../images/HousePic3.jpg';
 
 const PublishPage = () => {
     const {user, latLng, setLatLng} = useContext(Context);
-    const [file, setFile] = useState()
+    const [file, setFile] = useState();
     const [publicationData, setPublicationData] = useState({
         title: "",
         city: "",
@@ -25,21 +25,25 @@ const PublishPage = () => {
         availableFor: "sale"
     });
     const navigate = useNavigate();
+
     const handleChangeAvailableFor = e => {
         setPublicationData({
             ...publicationData,
             availableFor: e.target.value
         });
     }
+
     const handleChange = e => {
         setPublicationData({
             ...publicationData,
             [e.target.name]: e.target.value
         });
     }
+
     const handleImageChange = e => {
-         setFile(e.target.files[0])
+        setFile(e.target.files[0])
     }
+
     const handleSubmit = e => {
         e.preventDefault();
         if(!user.logged){
@@ -73,15 +77,17 @@ const PublishPage = () => {
                 })
         }
     }
+
     useEffect(() => {
         setPublicationData({
             ...publicationData,
             coordinates: latLng
         })
     },[latLng])
+
     return (
         <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
-            <div className='bg-gray-800 bg-opacity-50 h-full'>
+            <div className='bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar />
                 <div className="pt-16 flex flex-col items-center">
                     <h1 className="text-4xl text-white pb-8">Publicar</h1>
@@ -205,13 +211,14 @@ const PublishPage = () => {
                                         <td className="pl-2">
                                             <input 
                                                 className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="number" name="price" id="price" required={true} min={1000}
+                                                type="number" name="price" id="price" required={true} step={500} min={1000}
                                                 value={publicationData.price} onChange={handleChange}/>
                                         </td>
                                     </tr>
                                 </div>
-                                <div className="flex flex-col justify-end">
-                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Publicar</button>
+                                <div className="flex flex-row justify-end items-end">
+                                    <button type="submit" className="h-max bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-4 rounded">Publicar</button>
+                                    <button onClick={(e) => {navigate("/home")}} className="h-max bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Cancelar</button>
                                 </div>
                             </div>
                         </div>
@@ -219,6 +226,6 @@ const PublishPage = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
-export default PublishPage
+export default PublishPage;

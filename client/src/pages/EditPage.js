@@ -221,8 +221,9 @@ const EditPage = () => {
                                         </td>
                                     </tr>
                                 </div>
-                                <div className="flex flex-col justify-end">
-                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Guardar  </button>
+                                <div className="flex flex-row justify-end items-end">
+                                    <button type="submit" className="h-max bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-4 rounded">Guardar</button>
+                                    <button onClick={(e) => {navigate("/mis-publicaciones")}} className="h-max bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Cancelar</button>
                                 </div>
                             </div>
                         </div>
