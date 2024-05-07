@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import PropertyList from '../components/PropertyList/PropertyList';
-import HousePic from '../images/HousePic3.jpg'
+import HousePic from '../images/HousePic3.jpg';
 
 const Comprar = () => {
-    const [results, setResults] = useState(0)
+    const [results, setResults] = useState(0);
+
     return (
         <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='bg-gray-800 bg-opacity-50 h-full'>
@@ -22,7 +23,7 @@ const Comprar = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Comprar
+export default Comprar;

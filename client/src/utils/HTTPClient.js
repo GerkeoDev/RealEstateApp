@@ -31,6 +31,10 @@ class HTTPClient {
         return this.instance.get(`/estates/available-for/${availableFor}`)
     }
 
+    getEstateByCityAndAvailableFor(city, availableFor){
+        return this.instance.get(`/search/${city}/${availableFor}`)
+    }
+
     getEstatesByOwner(owner){
         return this.instance.get(`/estates/owner/${owner}`)
     }

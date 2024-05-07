@@ -11,6 +11,7 @@ import Detail from './pages/Detail';
 import PublishPage from './pages/PublishPage';
 import MyPublicationsPage from './pages/MyPublicationsPage';
 import EditPage from './pages/EditPage';
+import SearchList from './pages/SearchList';
 
 export const Context = React.createContext()
 
@@ -38,6 +39,7 @@ const PageRouter = (props) => {
                     <Route path='/alquilar' element={<Alquilar />}/>
                     <Route path='/alquilar/:id' element={<Detail />}/>
                     <Route path='/buscar' element={<Buscar />}/>
+                    <Route path='/buscar/:availableFor/:city' element={<SearchList />}/>
                     <Route path='/cuenta' element={<AccountPage />}/>
                     <Route path='/publicar' element={<PublishPage />}/>
                     <Route path='/mis-publicaciones' element={<MyPublicationsPage />}/>

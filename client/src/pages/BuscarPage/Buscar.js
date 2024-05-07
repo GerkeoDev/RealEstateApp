@@ -34,7 +34,7 @@ const Buscar = () => {
     const handleCity = (event) => {
         setSearchData({
             ...searchData,
-            city: event.target.value.toLowerCase()
+            city: event.target.value.replace(" ","-").toLowerCase()
         });
     }
 
@@ -52,6 +52,8 @@ const Buscar = () => {
         if (!validate()){
             return
         }
+
+        navigate("/buscar/" + searchData.availableFor + "/" + searchData.city);
     }
 
     return (
@@ -77,8 +79,8 @@ const Buscar = () => {
                                 <h1 className='text-lg font-bold'>Disponibilidad</h1>
                                 <select defaultValue="none" onChange={(event) => {handleAvailableFor(event)}} className='text-black w-52'>
                                     <option value="none" hidden>Elige uno</option>
-                                    <option value="comprar">Comprar</option>
-                                    <option value="alquilar">Alquilar</option>
+                                    <option value="sale">Comprar</option>
+                                    <option value="rent">Alquilar</option>
                                 </select>
                                 {validateErrors.availableFor && <p className='text-red-500 font-bold'>*{validateErrors.availableFor}</p>}
                             </div>

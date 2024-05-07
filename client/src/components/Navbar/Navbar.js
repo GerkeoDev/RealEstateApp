@@ -37,7 +37,7 @@ const Navbar = ({section}) => {
 
     return(
         <div className='bg-gray-800 opacity-85'>
-            <div className=' text-gray-300 flex justify-between items-center py-4 px-4'>
+            <div className='text-gray-300 flex justify-between items-center py-4 px-10'>
                 <div className='flex-1'>
                     <img className='h-10 cursor-pointer'  onClick={() => {navigate('/home')}} src={RealEstateLogo} alt='Real Estate App'></img>
                 </div>

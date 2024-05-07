@@ -33,7 +33,7 @@ const MyPublicationsPage = () => {
     }, [])
 
     return (
-        <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
+        <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90' style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='bg-gray-800 bg-opacity-50 h-full'>
                 <Navbar />
                 <div>
@@ -65,10 +65,10 @@ const MyPublicationsPage = () => {
                         <div className="pt-8 h-screen">
                             <div className="w rounded mx-auto flex flex-col justify-between bg-gray-800 bg-opacity-70 p-4">
                                 <h1 className="text-4xl mb-8 text-center text-white">Mis Publicaciones</h1>
-                                <div className=" flex flex-wrap justify-between mx-12">
+                                <div className="grid grid-cols-3 gap-4">
                                     {publications.map((publication)=>
-                                        <div key={publication._id} className="flex mb-4">
-                                            <div className="w-full rounded-md shadow-md bg-gray-800 bg-opacity-70 p-4 flex min-w-96">
+                                        <div key={publication._id} className="flex mb-4 min-w-28">
+                                            <div className="w-full rounded-md shadow-md bg-gray-800 bg-opacity-70 p-4 flex">
                                                 <img 
                                                     className="h-40 w-40 rounded mr-8 object-cover hover:object-scale-down hover:cursor-pointer"
                                                     src={publication.image} alt={publication.title} 
@@ -96,7 +96,7 @@ const MyPublicationsPage = () => {
                                     )}
                                 </div>
                                 <div className="text-right">
-                                    <button className="w-20 mr-12 py-1 px-2 rounded shadow-md text-white bg-blue-500 hover:bg-blue-600" onClick={(e) => navigate("/publicar")}>Añadir</button>
+                                    <button className="w-max mr-12 py-2 px-4 rounded shadow-md text-white bg-blue-500 hover:bg-blue-600 text-lg" onClick={(e) => navigate("/publicar")}>Añadir Publicación</button>
                                 </div>
                             </div>
                         </div>
