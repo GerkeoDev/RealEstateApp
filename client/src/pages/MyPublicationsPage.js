@@ -32,6 +32,16 @@ const MyPublicationsPage = () => {
         }
     }, [])
 
+    const UpperCaseCity = (city) => { //Primera letra de cada palabra en mayúsculas
+        let result = city.replace("-", " ");
+        let words = result.split(" ");
+        for (let i=0; i<words.length; i++){
+            words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+        }
+        result = words.join(" ");
+        return result;
+    }
+
     return (
         <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90' style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='overflow-auto bg-gray-800 bg-opacity-50 h-full'>
@@ -76,6 +86,7 @@ const MyPublicationsPage = () => {
                                                     <div className="flex flex-col text-white">
                                                         <h1 className="text-2xl">{publication.title}</h1>
                                                         <p className="max-w-96">{publication.description}</p>
+                                                        <p>{UpperCaseCity(publication.city)}</p>
                                                     </div>
                                                     <div>
                                                         <button 
@@ -95,7 +106,8 @@ const MyPublicationsPage = () => {
                                     )}
                                 </div>
                                 <div className="text-right">
-                                    <button className="w-max mr-12 py-2 px-4 rounded shadow-md text-white bg-blue-500 hover:bg-blue-600 text-lg" onClick={(e) => navigate("/publicar")}>Añadir Publicación</button>
+                                    <button className="w-max mr-4 py-2 px-4 rounded shadow-md text-white bg-blue-500 hover:bg-blue-600 text-lg" onClick={(e) => navigate("/publicar")}>Añadir Publicación</button>
+                                    <button className="w-max mr-4 py-2 px-4 rounded shadow-md text-white bg-red-600 hover:bg-red-700 text-lg" onClick={(e) => navigate("/cuenta")}>Atrás</button>
                                 </div>
                             </div>
                         </div>

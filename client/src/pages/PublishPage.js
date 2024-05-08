@@ -246,7 +246,7 @@ const PublishPage = () => {
                                 </div>
                                 <div className="flex flex-row justify-end items-end">
                                     <button type="submit" className="h-max bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 mr-4 rounded">Publicar</button>
-                                    <button onClick={(e) => {navigate("/home")}} className="h-max bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Cancelar</button>
+                                    <button onClick={(e) => {navigate(-1)}} className="h-max bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">Cancelar</button>
                                 </div>
                             </div>
                         </div>
