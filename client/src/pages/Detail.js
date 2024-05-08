@@ -3,11 +3,11 @@ import Navbar from "../components/Navbar/Navbar"
 import HTTPClient from "../utils/HTTPClient"
 import { useParams, useNavigate } from "react-router-dom"
 import MapDetailLocation from "../components/MapDetailLocation/MapDetailLocation"
-import HousePic from '../images/HousePic3.jpg'
+import HousePic from '../images/BackgroundPic.jpg'
 
 const Detail = () => {
-    const [data, setData] = useState({})
-    const [loaded, setLoaded] = useState(false)
+    const [data, setData] = useState({});
+    const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
     const [path, setPath] = useState("");
     const navigate = useNavigate();
@@ -78,7 +78,7 @@ const UpperCaseCity = (city) => { //Primera letra de cada palabra en mayúsculas
                                     <div>
                                         <button className="w-24 bg-blue-500 hover:bg-blue-600 px-2 py-2 rounded-md mr-4">Contactar</button>
                                         <button className="w-24 bg-red-600 hover:bg-red-700 px-2 py-2 rounded-md"
-                                        onClick={(event) => {navigate("/" + path)}}>Atrás</button>
+                                        onClick={(event) => {navigate(-1)}}>Atrás</button>
                                     </div>
                                 </div>
                             </div>

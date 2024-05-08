@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import './Buscar.style.css';
-import HousePic from '../../images/HousePic3.jpg'
+import HousePic from '../../images/BackgroundPic.jpg'
 
 const Buscar = () => {
     const navigate = useNavigate();

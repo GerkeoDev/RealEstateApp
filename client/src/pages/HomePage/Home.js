@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
-import HousePic1 from '../../images/HousePic1.jpg';
+import HousePic from '../../images/BackgroundPic.jpg';
 import './Home.style.css';
 
 const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='home-body bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic1})` }}>
+        <div className='home-body bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar
                     section='inicio'

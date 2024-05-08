@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import PropertyList from '../components/PropertyList/PropertyList';
-import HousePic from '../images/HousePic3.jpg'
+import HousePic from '../images/BackgroundPic.jpg'
 
 const Alquilar = () => {
     const [results, setResults] = useState(0)

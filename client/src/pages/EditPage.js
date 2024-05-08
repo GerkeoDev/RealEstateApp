@@ -1,11 +1,10 @@
-import HousePic from '../images/HousePic3.jpg'
 import { useNavigate, useParams } from "react-router-dom"
 import Navbar from "../components/Navbar/Navbar"
 import { useContext, useEffect, useState } from 'react'
 import MapLocation from '../components/MapLocation/MapLocation'
 import HTTPClient from '../utils/HTTPClient'
 import { Context } from '../PageRouter'
-
+import HousePic from '../images/BackgroundPic.jpg'
 
 const EditPage = () => {
     const {user} = useContext(Context)

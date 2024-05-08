@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import HTTPClient from "../utils/HTTPClient";
 import PropertyCard from "../components/PropertyCard/PropertyCard";
 import Navbar from '../components/Navbar/Navbar';
-import HousePic from '../images/HousePic3.jpg';
+import HousePic from '../images/BackgroundPic.jpg';
 
 const SearchDetail = () => {
     const {availableFor, city} = useParams();

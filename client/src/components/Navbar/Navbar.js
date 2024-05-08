@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../PageRouter';
-import RealEstateLogo from '../../images/realestateappwhite.png'
+import RealEstateLogo from '../../images/RealEstateAppWhite.png'
 
 const Navbar = ({section}) => {
     const {user} = useContext(Context)

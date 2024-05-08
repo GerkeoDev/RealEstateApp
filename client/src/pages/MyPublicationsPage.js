@@ -3,7 +3,7 @@ import { Context } from "../PageRouter";
 import HTTPClient from "../utils/HTTPClient";
 import Navbar from "../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-import HousePic from '../images/HousePic3.jpg';
+import HousePic from '../images/BackgroundPic.jpg';
 
 const MyPublicationsPage = () => {
     const {user} = useContext(Context);

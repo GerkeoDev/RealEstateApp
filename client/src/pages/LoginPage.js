@@ -4,7 +4,7 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 import { Context } from "../PageRouter";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import HousePic from '../images/HousePic3.jpg'
+import HousePic from '../images/BackgroundPic.jpg'
 
 const LoginPage = () => {
     const { user } = useContext(Context);

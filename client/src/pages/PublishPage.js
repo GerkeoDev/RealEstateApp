@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { Context } from "../PageRouter";
 import { useNavigate } from "react-router-dom";
 import HTTPClient from "../utils/HTTPClient";
-import HousePic from '../images/HousePic3.jpg';
+import HousePic from '../images/BackgroundPic.jpg';
 
 const PublishPage = () => {
     const {user, latLng, setLatLng} = useContext(Context);
