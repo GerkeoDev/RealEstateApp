@@ -72,12 +72,12 @@ const Buscar = () => {
                         <form onSubmit={handleSubmit} className='h-full flex justify-around items-center'>
                             <div className='min-w-72 flex flex-col gap-y-4'>
                                 <h1 className='text-lg font-bold'>Ubicación</h1>
-                                <input type='text' name='city' placeholder='Ciudad' onChange={(event) => {handleCity(event)}}className='text-black w-52'></input>
+                                <input type='text' name='city' placeholder='Ciudad' onChange={(event) => {handleCity(event)}}className='text-black w-52 border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500'></input>
                                 {validateErrors.city && <p className='text-red-500 font-bold'>*{validateErrors.city}</p>}
                             </div>
                             <div className='min-w-72 flex flex-col gap-y-4'>
                                 <h1 className='text-lg font-bold'>Disponibilidad</h1>
-                                <select defaultValue="none" onChange={(event) => {handleAvailableFor(event)}} className='text-black w-52'>
+                                <select defaultValue="none" onChange={(event) => {handleAvailableFor(event)}} className='text-black w-52 border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500'>
                                     <option value="none" hidden>Elige uno</option>
                                     <option value="sale">Comprar</option>
                                     <option value="rent">Alquilar</option>
@@ -85,7 +85,7 @@ const Buscar = () => {
                                 {validateErrors.availableFor && <p className='text-red-500 font-bold'>*{validateErrors.availableFor}</p>}
                             </div>
                             <div>
-                                <button type='submit' className="h-max bg-blue-600 hover:bg-blue-700 text-xl text-white font-bold py-4 px-6 mr-4 rounded">Buscar</button>
+                                <button type='submit' className="h-max bg-blue-600 hover:bg-blue-700 text-xl text-white font-bold py-3 px-6 mr-4 rounded">Buscar</button>
                             </div>
                         </form>
                     </div>

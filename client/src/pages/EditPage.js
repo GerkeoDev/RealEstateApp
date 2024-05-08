@@ -91,10 +91,10 @@ const EditPage = () => {
                     <h1>Cargando...</h1>
                 </div>
                 :
-                <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-16 flex flex-col items-center p-4">
+                <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-8 flex flex-col items-center p-8">
                     <h1 className="text-4xl text-white pb-8">Editar Publicación</h1>
                     <form className="flex" onSubmit={handleSubmit}>
-                        <div className="rounded flex flex-col justify-start shadow-md mr-8 p-8  bg-gray-800 bg-opacity-70">
+                        <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
                             <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
                             <div>
                                 <tr>

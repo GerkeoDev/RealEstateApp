@@ -108,10 +108,10 @@ const PublishPage = () => {
         <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='overflow-auto bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar />
-                <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-16 flex flex-col items-center p-4">
+                <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-8 flex flex-col items-center p-8">
                     <h1 className="text-4xl text-white pb-8">Publicar</h1>
                     <form className="flex" onSubmit={handleSubmit}>
-                        <div className="rounded flex flex-col justify-start shadow-md mr-8 p-8  bg-gray-800 bg-opacity-70">
+                        <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
                             <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
                             <div>
                                 <tr>

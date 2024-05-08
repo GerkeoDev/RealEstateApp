@@ -24,7 +24,7 @@ const PropertyCard = ({property}) => {
     return(
         <div className="border rounded border-gray-800 overflow-hidden shadow-2xl flex flex-col mb-4 bg-gray-800 bg-opacity-70 p-4 text-white">
             <div className="h-40 overflow-hidden">
-                <img className="object-cover w-full h-full" src={property.image} alt={property.title}/>
+                <img className="hover:object-scale-down object-cover w-full h-full" src={property.image} alt={property.title}/>
             </div>
             <div className="p-2">
                 <h2 className="text-lg font-semibold mb-2">{property.title}</h2>

@@ -44,7 +44,7 @@ const UpperCaseCity = (city) => { //Primera letra de cada palabra en mayúsculas
                         <div className="flex justify-center">
                             <div className="p-8 rounded shadow-md mr-4 bg-gray-800 bg-opacity-70">
                                 <h1 className="text-3xl mb-4 text-white">{data.title}</h1>
-                                <img src={data.image} alt={data.title} className="h-96 rounded-md"/>
+                                <img src={data.image} alt={data.title} className="h-96 max-w-xl rounded-md"/>
                             </div>
                             <div className="rounded flex flex-col justify-between p-8 shadow-md bg-gray-800 bg-opacity-70 text-white">
                                 <div>

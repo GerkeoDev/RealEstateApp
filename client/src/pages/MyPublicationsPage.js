@@ -90,10 +90,10 @@ const MyPublicationsPage = () => {
                                                     </div>
                                                     <div>
                                                         <button 
-                                                            className="py-1 px-2 rounded shadow-md bg-sky-500 hover:bg-sky-600 mr-2"
+                                                            className="text-white py-1 px-2 rounded shadow-md bg-blue-500 hover:bg-blue-600 mr-2"
                                                             onClick={()=>navigate(`/edit/${publication._id}`)}>Editar</button>
                                                         <button 
-                                                            className="py-1 px-2 rounded shadow-md bg-red-600 hover:bg-red-700"
+                                                            className="text-white py-1 px-2 rounded shadow-md bg-red-600 hover:bg-red-700"
                                                             onClick={()=>{
                                                                 if(window.confirm(`Seguro que quieres eliminar ${publication.title}?`)){
                                                                     deletePublication(publication._id)
