@@ -7,7 +7,7 @@ import HousePic from '../images/BackgroundPic.jpg'
 
 const AccountPage = () => {
     const navigate = useNavigate();
-    const {user, setUser} = useContext(Context);
+    const {user, setUser, setLatLng} = useContext(Context);
     
     useEffect(() => {
         if(!user.logged){
@@ -24,6 +24,7 @@ const AccountPage = () => {
                     console.log(err)
                 });
             setUser({});
+            setLatLng({});
             navigate("/home");
         }
     }

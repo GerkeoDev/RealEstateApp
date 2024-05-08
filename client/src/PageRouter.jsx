@@ -17,11 +17,7 @@ export const Context = React.createContext()
 
 const PageRouter = (props) => {
     const [user, setUser] = useLocalStorage('user', {})
-    const [latLng, setLatLng] = useLocalStorage('latLng', { lat: -25.28646, lng: -57.647 })
-
-    useEffect(()=> {
-        console.log(latLng)
-    }, [])
+    const [latLng, setLatLng] = useLocalStorage('latLng', {})
 
     return(
         <BrowserRouter>

@@ -94,54 +94,56 @@ const EditPage = () => {
                 <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-8 flex flex-col items-center p-8">
                     <h1 className="text-4xl text-white pb-8">Editar Publicación</h1>
                     <form className="flex" onSubmit={handleSubmit}>
-                        <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
-                            <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
-                            <div>
-                                <tr>
-                                    <td className="text-white">Título:</td> 
-                                    <td className="pl-2 py-2">
-                                        <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
-                                                value={publicationData.title} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Ciudad:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="city" id="city" placeholder="Ciudad" required={true}
-                                                value={publicationData.city} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Barrio:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
-                                                value={publicationData.neighborhood} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Dirección:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
-                                                value={publicationData.address} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Descripción:</td> 
-                                    <td className="pl-2">
-                                        <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
-                                                value={publicationData.description} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
+                        <div>
+                            <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
+                                <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
+                                <div>
+                                    <tr>
+                                        <td className="text-white">Título:</td> 
+                                        <td className="pl-2 py-2">
+                                            <input  
+                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                    type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
+                                                    value={publicationData.title} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Ciudad:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                    type="text" name="city" id="city" placeholder="Ciudad" required={true}
+                                                    value={publicationData.city} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Barrio:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                    type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
+                                                    value={publicationData.neighborhood} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Dirección:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                    type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
+                                                    value={publicationData.address} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Descripción:</td> 
+                                        <td className="pl-2">
+                                            <input  
+                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                    type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
+                                                    value={publicationData.description} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                </div>
                             </div>
                         </div>
                         <div className="rounded flex flex-col shadow-md p-8 bg-gray-800 bg-opacity-70">
@@ -149,7 +151,7 @@ const EditPage = () => {
                             <div className="flex">
                                 <div>
                                     <p className="text-white">Ubicación:</p>
-                                    <div className="mr-2 mb-2">
+                                    <div className="mr-4 mb-4">
                                         <MapLocation latLng={publicationData.coordinates} setLatLng={e => setPublicationData({
                                             ...publicationData,
                                             coordinates: e

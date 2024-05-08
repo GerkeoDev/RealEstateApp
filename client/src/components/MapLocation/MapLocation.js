@@ -16,17 +16,19 @@ const MapLocation = ({latLng, setLatLng}) => {
         libraries: libraries
     });
     useEffect(()=>{
-        setMarkerPosition(latLng);
+        if(latLng.lat){
+            setMarkerPosition(latLng);
+        }
     },[latLng]);
     return  <div className='text-sm'>
         {isLoaded?
             <GoogleMap
-                mapContainerStyle={{width: '300px', height: '240px'}}
-                center = {latLng}
+                mapContainerStyle={{width: '330px', height: '240px'}}
+                center = {latLng.lat?latLng:{ lat: -25.28646, lng: -57.647 }}
                 zoom = {8}
                 onClick={handleMapClick}
             >
-                {markerPosition && <MarkerF position={markerPosition} />}
+                {markerPosition && latLng && <MarkerF position={markerPosition} />}
             </GoogleMap>
         : <p>Loading...</p>
         }

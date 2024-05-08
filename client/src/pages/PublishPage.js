@@ -8,6 +8,7 @@ import HousePic from '../images/BackgroundPic.jpg';
 
 const PublishPage = () => {
     const {user, latLng, setLatLng} = useContext(Context);
+    const [errors, setErrors] = useState({})
     const [file, setFile] = useState();
     const [publicationData, setPublicationData] = useState({
         title: "",
@@ -60,8 +61,25 @@ const PublishPage = () => {
         setFile(e.target.files[0])
     }
 
+    const validate = () => {
+        let flag = true
+        let errors = {}
+        if(!latLng || !latLng.lat || !latLng.lng){
+            errors.latLng = "Ubicación requerida"
+            flag = false
+        }
+        
+        setErrors(errors)
+        return flag
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
+
+        if(!validate()){
+            console.log(errors)
+            return
+        }
 
         if(!user.logged){
             navigate('/login');
@@ -81,7 +99,7 @@ const PublishPage = () => {
                     };
                     client.publishEstate(updatedPublicationData)
                     .then(res => {
-                        setLatLng({ lat: -25.28646, lng: -57.647 })
+                        setLatLng({})
                         if(res.status === 200){
                             window.alert("Publicación exitosa!")
                             navigate('/mis-publicaciones');
@@ -111,62 +129,65 @@ const PublishPage = () => {
                 <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-8 flex flex-col items-center p-8">
                     <h1 className="text-4xl text-white pb-8">Publicar</h1>
                     <form className="flex" onSubmit={handleSubmit}>
-                        <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
-                            <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
-                            <div>
-                                <tr>
-                                    <td className="text-white">Título:</td> 
-                                    <td className="pl-2 py-2">
-                                        <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
-                                            value={publicationData.title} onChange={handleChange}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Ciudad:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="city" id="city" placeholder="Ciudad" required={true}
-                                            value={publicationData.city} onChange={(event) => {handleCity(event)}}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Barrio:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
-                                            value={publicationData.neighborhood} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Dirección:</td> 
-                                    <td className="pl-2 pb-2">
-                                        <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
-                                            value={publicationData.address} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td className="text-white">Descripción:</td> 
-                                    <td className="pl-2">
-                                        <input  
-                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                            type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
-                                            value={publicationData.description} onChange={handleChange}/>
-                                    </td> 
-                                </tr>
+                        <div>
+                            <div className="rounded flex flex-col justify-start shadow-md mr-16 p-8 bg-gray-800 bg-opacity-70">
+                                <h1 className="text-3xl text-center mb-4 text-white" onClick={()=>console.log(publicationData)}>Detalles Generales</h1>
+                                <div>
+                                    <tr>
+                                        <td className="text-white">Título:</td> 
+                                        <td className="pl-2 py-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
+                                                value={publicationData.title} onChange={handleChange}/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Ciudad:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="city" id="city" placeholder="Ciudad" required={true}
+                                                value={publicationData.city} onChange={(event) => {handleCity(event)}}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Barrio:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
+                                                value={publicationData.neighborhood} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Dirección:</td> 
+                                        <td className="pl-2 pb-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
+                                                value={publicationData.address} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Descripción:</td> 
+                                        <td className="pl-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
+                                                value={publicationData.description} onChange={handleChange}/>
+                                        </td> 
+                                    </tr>
+                                </div>
                             </div>
                         </div>
                         <div className="rounded flex flex-col shadow-md p-8 bg-gray-800 bg-opacity-70">
                             <h1 className="text-3xl text-center mb-4 text-white">Detalles de la Propiedad</h1>
                             <div className="flex">
                                 <div>
-                                    <p className="text-white">Ubicación:</p>
-                                    <div className="mr-2 mb-2">
+                                    <p className="text-white">Marque la ubicación en el mapa:</p>
+                                    {errors.latLng && <small className="text-red-600 text-sm">{errors.latLng}*</small>}
+                                    <div className="mr-4 mb-4">
                                         <MapLocation latLng={latLng} setLatLng={e => setLatLng(e)}/>
                                     </div>
                                 </div>
