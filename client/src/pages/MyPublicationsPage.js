@@ -34,7 +34,7 @@ const MyPublicationsPage = () => {
 
     return (
         <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90' style={{ backgroundImage: `url(${HousePic})` }}>
-            <div className='bg-gray-800 bg-opacity-50 h-full'>
+            <div className='overflow-auto bg-gray-800 bg-opacity-50 h-full'>
                 <Navbar />
                 <div>
                     {
@@ -58,7 +58,6 @@ const MyPublicationsPage = () => {
                                     Volver a Inicio
                                     </button>
                                 </div>
-                                
                             </div>
                         </div>
                         :

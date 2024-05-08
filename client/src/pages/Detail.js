@@ -59,16 +59,17 @@ const UpperCaseCity = (city) => { //Primera letra de cada palabra en mayúsculas
                                 </div>
                                 <div className="flex">
                                     <div className="flex-1">
-                                        <p>{data.description}</p>
+                                        <p>Propietario: {data.owner}</p>
+                                        <p className="pb-2">Teléfono: {data.phoneNumber}</p>
+                                        <p>Ciudad: {UpperCaseCity(data.city)}</p>
+                                        <p>Barrio: {data.neighborhood}</p>
+                                        <p>Dirección: {data.address}</p>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="pb-2">{data.description}</p>
                                         <p>Habitaciones: {data.rooms}</p>
                                         <p>Dormitorios: {data.bedrooms}</p>
                                         <p>Baños: {data.bathrooms}</p>
-                                        <p>Propietario: {data.owner}</p>
-                                    </div>
-                                    <div className="flex-1">
-                                        <p>City: {UpperCaseCity(data.city)}</p>
-                                        <p>Neighborhood: {data.neighborhood}</p>
-                                        <p>Address: {data.address}</p>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center">
@@ -76,7 +77,6 @@ const UpperCaseCity = (city) => { //Primera letra de cada palabra en mayúsculas
                                         <p className="text-green-700 text-2xl">{data.price}$</p>
                                     </div>
                                     <div>
-                                        <button className="w-24 bg-blue-500 hover:bg-blue-600 px-2 py-2 rounded-md mr-4">Contactar</button>
                                         <button className="w-24 bg-red-600 hover:bg-red-700 px-2 py-2 rounded-md"
                                         onClick={(event) => {navigate(-1)}}>Atrás</button>
                                     </div>

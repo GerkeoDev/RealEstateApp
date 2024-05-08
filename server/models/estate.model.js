@@ -15,6 +15,11 @@ const EstateSchema =  new mongoose.Schema({
         type: String,
         required: [true, "The estate needs an owner"],
     },
+    phoneNumber: {
+        type: String,
+        required: [true, "The estate needs an owner's phone number"],
+        minlength: [10, "The phone number must have 10 characters long"]
+    },
     city: {
         type: String,
         required: [true, "The estate needs a city"],

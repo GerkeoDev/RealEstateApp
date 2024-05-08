@@ -15,6 +15,7 @@ const PublishPage = () => {
         neighborhood: "",
         description: "",
         owner: user.userName,
+        phoneNumber: "",
         address: "",
         coordinates: latLng,
         price: 5000,
@@ -47,12 +48,21 @@ const PublishPage = () => {
         })
     }
 
+    const handlePhoneNumber = (event) => {
+        let phone = event.target.value.replace(/^(\d{4})(\d{3})(\d{3})/, '$1-$2-$3');
+        setPublicationData({
+            ...publicationData,
+            phoneNumber: phone
+        })
+    }
+
     const handleImageChange = e => {
         setFile(e.target.files[0])
     }
 
     const handleSubmit = e => {
         e.preventDefault();
+
         if(!user.logged){
             navigate('/login');
         }else{
@@ -96,7 +106,7 @@ const PublishPage = () => {
 
     return (
         <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
-            <div className='bg-gray-800 bg-opacity-50 h-screen'>
+            <div className='overflow-auto bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar />
                 <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-16 flex flex-col items-center p-4">
                     <h1 className="text-4xl text-white pb-8">Publicar</h1>
@@ -108,45 +118,45 @@ const PublishPage = () => {
                                     <td className="text-white">Título:</td> 
                                     <td className="pl-2 py-2">
                                         <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
-                                                value={publicationData.title} onChange={handleChange}/>
-                                    </td> 
+                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
+                                            value={publicationData.title} onChange={handleChange}/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td className="text-white">Ciudad:</td> 
                                     <td className="pl-2 pb-2">
                                         <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="city" id="city" placeholder="Ciudad" required={true}
-                                                value={publicationData.city} onChange={(event) => {handleCity(event)}}/>
+                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="text" name="city" id="city" placeholder="Ciudad" required={true}
+                                            value={publicationData.city} onChange={(event) => {handleCity(event)}}/>
                                     </td> 
                                 </tr>
                                 <tr>
                                     <td className="text-white">Barrio:</td> 
                                     <td className="pl-2 pb-2">
                                         <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
-                                                value={publicationData.neighborhood} onChange={handleChange}/>
+                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
+                                            value={publicationData.neighborhood} onChange={handleChange}/>
                                     </td> 
                                 </tr>
                                 <tr>
                                     <td className="text-white">Dirección:</td> 
                                     <td className="pl-2 pb-2">
                                         <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
-                                                value={publicationData.address} onChange={handleChange}/>
+                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
+                                            value={publicationData.address} onChange={handleChange}/>
                                     </td> 
                                 </tr>
                                 <tr>
                                     <td className="text-white">Descripción:</td> 
                                     <td className="pl-2">
                                         <input  
-                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
-                                                value={publicationData.description} onChange={handleChange}/>
+                                            className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                            type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
+                                            value={publicationData.description} onChange={handleChange}/>
                                     </td> 
                                 </tr>
                             </div>
@@ -213,6 +223,15 @@ const PublishPage = () => {
                                                 <option value="sale">Vender</option>
                                                 <option value="rent">Alquilar</option>
                                             </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-white">Teléfono:</td> 
+                                        <td className="pb-2 pl-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="phoneNumber" id="phoneNumber" placeholder="Teléfono de contacto" required={true} minLength={10} maxLength={10}
+                                                value={publicationData.phoneNumber} onChange={handlePhoneNumber}/>
                                         </td>
                                     </tr>
                                     <tr>

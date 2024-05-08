@@ -119,7 +119,6 @@ const refresh = (req, res) => {
         del payload.exp
         */
 
-
         let token = jwt.sign(payload, JWT_SECRET, {
             expiresIn: "30s"
         });
