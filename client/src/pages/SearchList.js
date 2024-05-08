@@ -37,7 +37,7 @@ const SearchDetail = () => {
                         <p className='text-white'>Búsqueda en {city.replace("-", " ").toUpperCase()} para {availableFor === "sale" ? "COMPRAR" : "ALQUILAR"}</p>
                         <p className="text-xl text-white">Showing all {results} results</p>
                         {
-                            properties.length == 0 ? 
+                            properties.length === 0 ? 
                             <div className="pt-8">
                                 <div className="w rounded h-full mx-auto p-4 text-center">
                                     <h1 className="text-4xl mb-8 text-center text-white">No hay propiedades que coincidan con tu búsqueda</h1>

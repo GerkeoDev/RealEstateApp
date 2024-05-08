@@ -9,7 +9,6 @@ const Detail = () => {
     const [data, setData] = useState({});
     const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
-    const [path, setPath] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,12 +18,6 @@ const Detail = () => {
             .then(res => {
                 setData(res.data);
                 setLoaded(true);
-                if (res.data.availableFor == "sale") {
-                    setPath("comprar");
-                }
-                else {
-                    setPath("alquilar");
-                }
             })
             .catch(err => console.log(err));
 

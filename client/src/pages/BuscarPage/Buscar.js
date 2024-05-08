@@ -16,12 +16,12 @@ const Buscar = () => {
         let flag = true;
         let error = {};
 
-        if (searchData.city.length == 0) {
+        if (searchData.city.length === 0) {
             error.city = "Debe ingresar una ciudad";
             flag = false;
         }
 
-        if (searchData.availableFor.length == 0) {
+        if (searchData.availableFor.length === 0) {
             error.availableFor = "Debe elegir una opción de búsqueda";
             flag = false;
         }

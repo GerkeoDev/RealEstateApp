@@ -1,6 +1,4 @@
 import {useNavigate} from "react-router-dom";
-import { useContext, useState } from "react";
-import { Context } from "../../PageRouter";
 
 const PropertyCard = ({property}) => {
     const navigate = useNavigate();
