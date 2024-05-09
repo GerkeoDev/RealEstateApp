@@ -9,10 +9,11 @@ import HousePic from '../images/BackgroundPic.jpg'
 const EditPage = () => {
     const {user} = useContext(Context)
     const {id} = useParams()
-    const [publicationData, setPublicationData] = useState([])
+    const [publicationData, setPublicationData] = useState({})
     const [file, setFile] = useState()
-    const navigate = useNavigate()
     const [loaded, setLoaded] = useState(false)
+    const navigate = useNavigate()
+
     useEffect(() => {
         let client = new HTTPClient()
 
@@ -20,6 +21,7 @@ const EditPage = () => {
             .then(res => {
                 setPublicationData(res.data)
                 setLoaded(true)
+                console.log("Propiedad: ", res.data)
             })
             .catch(err => console.log(err))
     },[])
@@ -29,17 +31,36 @@ const EditPage = () => {
             [e.target.name]: e.target.value
         });
     }
+
     const handleImageChange = e => {
         setFile(e.target.files[0])
     }
+
+    const handleCity = (event) => {
+        setPublicationData({
+            ...publicationData,
+            city: event.target.value.replace(" ","-").toLowerCase()
+        })
+    }
+
+    const handlePhoneNumber = (event) => {
+        let phone = event.target.value.replace(/^(\d{4})(\d{3})(\d{3})/, '$1-$2-$3');
+        setPublicationData({
+            ...publicationData,
+            phoneNumber: phone
+        })
+    }
+
     const handleChangeAvailableFor = e => {
         setPublicationData({
             ...publicationData,
             availableFor: e.target.value
         });
     }
+
     const handleSubmit = e => {
         e.preventDefault()
+
         if(!user.logged){
             navigate('/login');
         }else{
@@ -82,8 +103,9 @@ const EditPage = () => {
             }    
         }
     }
+
     return (
-        <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
+        <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90' style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='overflow-auto bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar />
                 {!loaded ?
@@ -102,45 +124,45 @@ const EditPage = () => {
                                         <td className="text-white">Título:</td> 
                                         <td className="pl-2 py-2">
                                             <input  
-                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                    type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
-                                                    value={publicationData.title} onChange={handleChange}/>
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="title" id="title" placeholder="Título" required={true} minLength={5}
+                                                value={publicationData.title} onChange={handleChange}/>
                                         </td> 
                                     </tr>
                                     <tr>
                                         <td className="text-white">Ciudad:</td> 
                                         <td className="pl-2 pb-2">
                                             <input  
-                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                    type="text" name="city" id="city" placeholder="Ciudad" required={true}
-                                                    value={publicationData.city} onChange={handleChange}/>
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="city" id="city" placeholder="Ciudad" required={true}
+                                                value={publicationData.city} onChange={(event) => {handleCity(event)}}/>
                                         </td> 
                                     </tr>
                                     <tr>
                                         <td className="text-white">Barrio:</td> 
                                         <td className="pl-2 pb-2">
                                             <input  
-                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                    type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
-                                                    value={publicationData.neighborhood} onChange={handleChange}/>
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="neighborhood" id="neighborhood" placeholder="Barrio" required={true}
+                                                value={publicationData.neighborhood} onChange={handleChange}/>
                                         </td> 
                                     </tr>
                                     <tr>
                                         <td className="text-white">Dirección:</td> 
                                         <td className="pl-2 pb-2">
                                             <input  
-                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                    type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
-                                                    value={publicationData.address} onChange={handleChange}/>
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="address" id="address" placeholder="Calle/Dirección" required={true}
+                                                value={publicationData.address} onChange={handleChange}/>
                                         </td> 
                                     </tr>
                                     <tr>
                                         <td className="text-white">Descripción:</td> 
                                         <td className="pl-2">
                                             <input  
-                                                    className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
-                                                    type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
-                                                    value={publicationData.description} onChange={handleChange}/>
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="description" id="description" placeholder="Breve descripción" required={true} minLength={20} maxLength={200}
+                                                value={publicationData.description} onChange={handleChange}/>
                                         </td> 
                                     </tr>
                                 </div>
@@ -213,6 +235,15 @@ const EditPage = () => {
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td className="text-white">Teléfono:</td> 
+                                        <td className="pb-2 pl-2">
+                                            <input  
+                                                className="border border-gray-300 rounded-md py-1 px-1 focus:outline-none focus:border-blue-500 w-full"
+                                                type="text" name="phoneNumber" id="phoneNumber" placeholder="Teléfono de contacto" required={true} minLength={10} maxLength={10}
+                                                value={publicationData.phoneNumber} onChange={handlePhoneNumber}/>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td className="text-white">Precio:</td> 
                                         <td className="pl-2">
                                             <input 
@@ -233,6 +264,7 @@ const EditPage = () => {
                 }
             </div>
         </div>
-    )
+    );
 }
-export default EditPage
+
+export default EditPage;
