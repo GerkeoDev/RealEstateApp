@@ -123,7 +123,7 @@ const PublishPage = () => {
     },[latLng])
 
     return (
-        <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90'  style={{ backgroundImage: `url(${HousePic})` }}>
+        <div className='h-screen bg-cover bg-no-repeat bg-center bg-fixed bg-opacity-90' style={{ backgroundImage: `url(${HousePic})` }}>
             <div className='overflow-auto bg-gray-800 bg-opacity-50 h-screen'>
                 <Navbar />
                 <div className="w rounded mx-auto bg-gray-800 bg-opacity-70 mt-8 flex flex-col items-center p-8">

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from '../../components/Navbar/Navbar';
-import HousePic from '../../images/BackgroundPic.jpg';
-//import './Home.style.css';
+import Navbar from '../components/Navbar/Navbar';
+import HousePic from '../images/BackgroundPic.jpg';
 
 const Home = () => {
     const navigate = useNavigate();

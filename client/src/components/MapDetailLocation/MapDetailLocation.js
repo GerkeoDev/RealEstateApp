@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
-import { Context } from '../../PageRouter';
+import HouseIcon from '../../images/House.png';
 
 
 const MapDetailLocation = ({coordinates}) => {
@@ -17,7 +17,7 @@ const MapDetailLocation = ({coordinates}) => {
                 center = {coordinates}
                 zoom = {10}
             >
-                {markerPosition && <MarkerF position={markerPosition} />}
+                {markerPosition && <MarkerF position={markerPosition} icon={{url: HouseIcon}}/>}
             </GoogleMap>
         : <p>Loading...</p>
         }
