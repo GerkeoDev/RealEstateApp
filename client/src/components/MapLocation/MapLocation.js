@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
-import HouseIcon from '../../images/House.png';
+import HouseIcon from '../../images/HouseIcon.png';
 
 const MapLocation = ({latLng, setLatLng}) => {
     const libraries = ['places'];
