@@ -82,6 +82,7 @@ const PublishPage = () => {
         }
 
         if(!user.logged){
+            window.alert("Debes registrarte y/o iniciar sesión para realizar una publicación!")
             navigate('/login');
         }else{
             let client = new HTTPClient();

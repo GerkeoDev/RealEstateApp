@@ -35,7 +35,7 @@ const SearchDetail = () => {
                 <div className="mt-4 h-screen">
                     <div className="w rounded mx-auto flex flex-col bg-gray-800 bg-opacity-70 p-4">
                         <p className='text-white'>Búsqueda en {city.replace("-", " ").toUpperCase()} para {availableFor === "sale" ? "COMPRAR" : "ALQUILAR"}</p>
-                        <p className="text-xl text-white">Showing all {results} results</p>
+                        <p className="text-xl text-white">Mostrando {results} resultado(s)</p>
                         {
                             properties.length === 0 ? 
                             <div className="pt-8">
